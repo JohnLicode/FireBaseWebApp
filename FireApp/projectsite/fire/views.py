@@ -232,7 +232,10 @@ class firestationListView(ListView):
                 Q(country__icontains=query)
             )
         return qs
-    
+
+
+ #FireStation CRUD Views
+
 class firestationCreateView(CreateView):
     model = FireStation
     form_class = FireStationzForm
@@ -251,6 +254,7 @@ class firestationDeleteView(DeleteView):
     success_url = reverse_lazy('station-list')
     
 
+# Incident CRUD Views
 
 class IncidentListView(ListView):
     model = Incident
@@ -286,7 +290,10 @@ class IncidentDeleteView(DeleteView):
     model = Incident
     template_name= 'incident_del.html'
     success_url = reverse_lazy('incident-list')
-    
+
+
+# Location CRUD Views
+
 class LocationListView(ListView):
     model = Locations
     template_name = 'loc_list.html'
@@ -321,6 +328,9 @@ class LocationDeleteView(DeleteView):
     model = Locations
     template_name= 'loc_del.html'
     success_url = reverse_lazy('loc-list')
+
+
+# Weather CRUD Views
 
 class ConditionListView(ListView):
     model = WeatherConditions
@@ -359,6 +369,7 @@ class ConditionDeleteView(DeleteView):
     success_url = reverse_lazy('weather-list')
     
     
+#FireTruck CRUD Views
     
 class FiretruckListView(ListView):
     model = FireTruck
@@ -396,7 +407,7 @@ class FiretruckDeleteView(DeleteView):
     success_url = reverse_lazy('fireTruck-list')
     
     
-
+#Firefighters CRUD Views
 
 class FirefightersListView(ListView):
     model = Firefighters
@@ -427,3 +438,5 @@ class FirefightersDeleteView(DeleteView):
     model = Firefighters
     template_name = 'firefighter_del.html'
     success_url = reverse_lazy('firefighters-list')
+
+
