@@ -6,13 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Delete Incident</div>
+                        <div class="card-title">Delete Fire Truck</div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="card-body">
                             <form class="" action="" method="post" novalidate>
-                                <p>Are you sure you want to delete "{{ object.location }}"?</p>
+                                <p>Are you sure you want to delete "{{ object.truck_number }}"?</p>
                                 {% csrf_token %} {% include 'includes/form.html' %}
                                 <div class="form-group">
                                     <div class="col-md-12 col-sm-3">

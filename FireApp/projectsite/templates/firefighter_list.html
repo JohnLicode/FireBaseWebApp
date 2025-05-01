@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Firefighter</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">List of Firefighters</div>
+                        <div class="card-category">Available firefighter entries</div>
+                    </div>
+                    <br />
+                    <div class="col-md-12 row">
+                        <div class="col-md-6">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search ..." class="form-control" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="la la-search search-icon"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pull-right">
+                                <a href="{% url 'firefighters-add'%}" class="btn btn-success btn-rounded">Add Firefighter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rank</th>
+                                    <th scope="col">Experience Level</th>
+                                    <th scope="col">Station</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for object in object_list %}
+                                <tr>
+                                    <td>{{ object.name }}</td>
+                                    <td>{{ object.rank }}</td>
+                                    <td>{{ object.experience_level  }}</td>
+                                    <td>{{ object.station }}</td>
+                                    <td>
+                                        <a href="{% url 'firefighters-update' object.pk %}">Edit</a>
+                                        <a style="color: red;"  href="{% url 'firefighters-delete' object.pk %}">Delete</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="2" style="text-align: center;">
+                                        <p class="text-sm font-weight-bold mb-0">No FireStation Found</p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include 'includes/pagination.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
