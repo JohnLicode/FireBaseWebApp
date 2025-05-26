@@ -14,9 +14,9 @@
                     <br />
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'weather-list' %}">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Search ..." class="form-control" />
+                                    <input type="text" placeholder="Search ..." class="form-control" name="q"/>
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="la la-search search-icon"></i>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <a href="" class="btn btn-success btn-rounded">Add Weather condition</a>
+                                <a href="{% url 'condition-add' %}" class="btn btn-success btn-rounded">Add Weather condition</a>
                             </div>
                         </div>
                     </div>
@@ -41,6 +41,7 @@
                                     <th scope="col">Humidity</th>
                                     <th scope="col">Wind Speed</th>
                                     <th scope="col">Weather description</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,8 +53,9 @@
                                     <td>{{ object.wind_speed }}</td>
                                     <td>{{ object.weather_description }}</td>
                                     <td>
-                                        <a href="">Edit</a>
-                                        <a style="color: red;"  href="">Delete</a>
+                                        <a href="{% url 'condition-update' object.id %}">
+Edit</a>
+                                        <a style="color: red;"  href="{% url 'condition-delete' object.id %}">Delete</a>
                                     </td>
                                 </tr>
                                 {% empty %}
